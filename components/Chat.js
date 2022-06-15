@@ -28,7 +28,10 @@ function Chat({ id, users }) {
       ) : (
         <UserAvatar>{recipientEmail[0]}</UserAvatar>
       )}
+      <div>
       <p>{recipientEmail}</p>
+      {recipient?.typing ? <p className="typing-text">Typing....</p>:<p className="last-message-text">Last Message</p>}
+      </div>
     </Container>
   );
 }
@@ -39,11 +42,23 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 15px;
+  padding: 0px 15px;
   word-wrap: break-word;
+  height: 80px;
 
   :hover {
     background-color: #e9eaeb;
+  }
+  .typing-text{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top:-10px;
+    color: #00CA00;
+  }
+  .last-message-text{
+    font-size: 15px;
+    margin-top:-10px;
+    color: #aaa;
   }
 `;
 
